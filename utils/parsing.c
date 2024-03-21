@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:40:52 by amouhand          #+#    #+#             */
-/*   Updated: 2024/03/20 18:02:27 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:49:27 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int parsing(char **command, int n)
 	{
 		if (error_check(command[i]))
 			return (1);
-		if (find_duplicates(command))
+		if (find_duplicates(command, n))
 			return (1);
 		i++;
 	}
@@ -46,19 +46,21 @@ int error_check(char *num)
 	}
 	return (0);
 }
-int find_duplicates(char **numbers)
+int find_duplicates(char **numbers, int n)
 {
 	int i;
 	int j;
+	int arr[n];
 	
 	i = 0;
 	j = 0;
-	while(numbers[i])
+	string_to_array(numbers, n, arr);
+	while (i < n)
 	{
 		j = i + 1;
-		while (numbers[j])
+		while (j < n)
 		{
-			if (!ft_strncmp(numbers[i], numbers[j], 11))
+			if (arr[i] == arr[j])
 				return (1);
 			j++;
 		}
