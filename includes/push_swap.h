@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amouhand <amouhand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:05:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/03/20 18:01:45 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/03/21 01:48:27 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int			*countingsort(int *numbers, int n);
 int			is_sorted(int arr[], int size);
 int			*string_to_array(char **chars, int n, int nums[]);
 int			is_sorted(int arr[], int size);
-int			find_duplicates(char **numbers);
+int			find_duplicates(char **numbers, int n);
 
 #endif
