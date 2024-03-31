@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:40:52 by amouhand          #+#    #+#             */
-/*   Updated: 2024/03/21 12:49:27 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/03/31 00:31:21 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int error_check(char *num)
 	long long number;
 	i = 0;
 
+	if (num == NULL || num[0] == '\0')
+		return (1);
 	number = ft_atol(num);
 	if (number > INT_MAX || number < INT_MIN)
 		return (1);
@@ -67,4 +69,47 @@ int find_duplicates(char **numbers, int n)
 		i++;
 	}
 	return (0);
+}
+int countwords(char *str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+		{
+			count++;
+			while (str[i] != ' ' && str[i])
+				i++;
+		}
+		else
+			i++;
+	}
+	return (count);
+}
+int *splitting(char *str, int countwords(char *str))
+{
+	int *arr;
+	char **split;
+	int i;
+	int n;
+
+	i = 0;
+	n = countwords(str);
+	arr = (int *)malloc(sizeof(int) * n);
+	if (!arr)
+		return (NULL);
+	split = ft_split(str, ' ');
+	if (!split)
+		return (NULL);
+	while (i < n)
+	{
+		arr[i] = ft_atoi(split[i]);
+		i++;
+	}
+	free(split);
+	return (arr);
 }

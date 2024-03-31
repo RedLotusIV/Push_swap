@@ -1,6 +1,7 @@
 NAME	=	push_swap
 
 SRC		= 	src/algo.c src/main.c utils/parsing.c utils/utils.c\
+			utils/structs.c utils/structs2.c\
 
 CC		=	cc
 

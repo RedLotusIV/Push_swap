@@ -6,17 +6,30 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:02:17 by amouhand          #+#    #+#             */
-/*   Updated: 2024/03/20 17:47:16 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/03/31 03:17:42 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void exiting(char *msg)
+void exiting(char *msg, t_tree *tree)
 {
 	write(2, msg, ft_strlen(msg));
+	if (tree)
+	{
+		if (tree->args)
+			free(tree->args);
+		if (tree->nums)
+			free(tree->nums);
+		if(tree->a)
+			ft_stackclear(&tree->a);
+		if(tree->b)
+			ft_stackclear(&tree->a);
+		free(tree);
+	}
 	exit(1);
 }
+
 long	long	ft_atol(const char *nptr)
 {
 	long		sign;
@@ -51,11 +64,14 @@ int is_sorted(int arr[], int size)
     return (0);
 }
 
-int *string_to_array(char **chars, int n, int nums[])
+int *string_to_array(char **chars, int n, int *nums)
 {
 	int i;
 
 	i = 1;
+	nums = (int *)malloc(sizeof(int) * n);
+	if (!nums)
+		return (NULL);
 	while (i < n)
 	{
 		nums[i] = ft_atoi(chars[i]);
@@ -63,6 +79,7 @@ int *string_to_array(char **chars, int n, int nums[])
 	}
 	return (nums);
 }
+
 // void	start_stacks(t_stack *first, int n)
 // {
 // 	int i;
