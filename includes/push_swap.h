@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:05:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/03/31 06:18:12 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/01 03:48:04 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_stack
 	int				number;
 	int				index;
 	struct s_stack	*next;
+	struct s_stack	*prev;
 }				t_stack;
 
 typedef struct s_tree
@@ -47,6 +48,6 @@ t_stack		*ft_stacknew(int index, int number);
 void		ft_stackadd_front(t_stack **stack, t_stack *new);
 void		ft_stackclear(t_stack **stack);
 void		ft_stackdelone(t_stack *stack);
-void		swap(t_stack **stack);
-
+void		ft_swap(t_stack **stack);
+void		ft_push(t_stack **from, t_stack **to);
 #endif

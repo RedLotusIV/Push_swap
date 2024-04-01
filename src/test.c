@@ -1,39 +1,57 @@
-#include "../includes/push_swap.h"
-int main() {
-    // Create a new stack
-    t_stack *stack = ft_stacknew(0, 5);
-    if (!stack) {
-        printf("Failed to create stack\n");
-        return 1;
-    }
+// #include "../includes/push_swap.h"
 
-    // Add some elements to the stack
-    for (int i = 1; i < 5; i++) {
-        t_stack *new_node = ft_stacknew(i, i * 10);
-        if (!new_node) {
-            printf("Failed to create stack node\n");
-            ft_stackclear(&stack);
-            return 1;
-        }
-        ft_stackadd_front(&stack, new_node);
-    }
-    swap(&stack);
-    // Print the stack
-    t_stack *ptr = stack;
-    while (ptr) {
-        printf("Index: %d, Number: %d\n", ptr->index, ptr->number);
-        ptr = ptr->next;
-    }
+// int main() {
+//     // Create two new stacks
+//     t_stack *stack1 = ft_stacknew(0, 5);
+//     t_stack *stack2 = NULL;
+//     if (!stack1) {
+//         printf("Failed to create stack1\n");
+//         return 1;
+//     }
 
-    // Clear the stack
-    ft_stackclear(&stack);
+//     // Add some elements to stack1
+//     for (int i = 1; i < 5; i++) {
+//         t_stack *new_node = ft_stacknew(i, i * 10);
+//         if (!new_node) {
+//             printf("Failed to create stack node\n");
+//             ft_stackclear(&stack1);
+//             return 1;
+//         }
+//         ft_stackadd_front(&stack1, new_node);
+//     }
 
-    // Try to print the stack again
-    if (!stack) {
-        printf("Stack is empty\n");
-    } else {
-        printf("Stack is not empty\n");
-    }
+//     // Print stack1
+//     printf("Stack1 before pushing to Stack2:\n");
+//     t_stack *ptr = stack1;
+//     while (ptr) {
+//         printf("Index: %d, Number: %d\n", ptr->index, ptr->number);
+//         ptr = ptr->next;
+//     }
 
-    return 0;
-}
+//     // Push elements from stack1 to stack2
+//     for (int i = 0; i < 3; i++) {
+//         ft_push(&stack1, &stack2);
+//     }
+//     ft_swap(&stack2);
+//     ft_swap(&stack1);
+//     // Print stack1 and stack2 after pushing
+//     printf("Stack1 after pushing to Stack2:\n");
+//     ptr = stack1;
+//     while (ptr) {
+//         printf("Index: %d, Number: %d\n", ptr->index, ptr->number);
+//         ptr = ptr->next;
+//     }
+
+//     printf("Stack2 after pushing from Stack1:\n");
+//     ptr = stack2;
+//     while (ptr) {
+//         printf("Index: %d, Number: %d\n", ptr->index, ptr->number);
+//         ptr = ptr->next;
+//     }
+
+//     // Clear the stacks
+//     ft_stackclear(&stack1);
+//     ft_stackclear(&stack2);
+
+//     return 0;
+// }

@@ -1,5 +1,5 @@
 #include "../includes/push_swap.h"
-void swap(t_stack **stack)
+void ft_swap(t_stack **stack)
 {
 	t_stack *tmp;
 
@@ -14,20 +14,36 @@ void swap(t_stack **stack)
 	*stack = tmp->next;
 	free(tmp);
 }
-void rotate(t_stack **stack)
+void ft_push(t_stack **from, t_stack **to)
 {
-	if (!stack || !*stack)
-		return ;
+	t_stack *new_node;
 	
+    if (!from || !*from || !to)
+        return ;
+    new_node = ft_stacknew((*from)->index, (*from)->number);
+    if (!new_node)
+        return;
+    ft_stackadd_front(to, new_node);
+    t_stack *temp = *from;
+    *from = (*from)->next;
+    free(temp);
 }
+// void rotate(t_stack **stack)
+// {
+// 	t_stack *tmp;
+// 	if (!stack || !*stack)
+// 		return ;
+	
+// 	tmp = *stack;
+// 	*stack = ft_stacklast(*stack);
+// 	while(tmp->next != *stack)
+// 	{
+// 		tmp->next = ;
+// 		tmp = tmp->next;
+// 	}
+// }
 void reverse_rotate(t_stack **stack)
 {
 	if (!stack || !*stack)
 		return ;
-}
-void push(t_stack **stack1, t_stack **stack2)
-{
-	if (!stack1 || !*stack1 || !*stack2 || !stack2)
-		return ;
-	
 }

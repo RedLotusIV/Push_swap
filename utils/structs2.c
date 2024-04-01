@@ -20,8 +20,6 @@ t_stack	*ft_stacklast(t_stack *stack)
 		return (NULL);
 	last = stack;
 	while (last->next)
-	{
 		last = last->next;
-	}
 	return (last);
 }
