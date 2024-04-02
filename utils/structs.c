@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:08:35 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/01 03:56:41 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/01 21:05:48 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_stack	*ft_stacknew(int index, int number)
 		return (NULL);
 	head -> index = index;
 	head -> number = number;
-	head -> prev = NULL;
 	head -> next = NULL;
 	return (head);
 }
@@ -32,8 +31,6 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new)
 		if (*stack)
 			new -> next = *stack;
 		*stack = new;
-		if (new -> next)
-			new -> next -> prev = new;
 	}
 }
 

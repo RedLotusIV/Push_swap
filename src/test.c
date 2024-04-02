@@ -21,7 +21,7 @@
 //     }
 
 //     // Print stack1
-//     printf("Stack1 before pushing to Stack2:\n");
+//     printf("Stack1 before:\n");
 //     t_stack *ptr = stack1;
 //     while (ptr) {
 //         printf("Index: %d, Number: %d\n", ptr->index, ptr->number);
@@ -29,20 +29,20 @@
 //     }
 
 //     // Push elements from stack1 to stack2
-//     for (int i = 0; i < 3; i++) {
-//         ft_push(&stack1, &stack2);
-//     }
-//     ft_swap(&stack2);
-//     ft_swap(&stack1);
+//     // for (int i = 0; i < 3; i++) {
+//     //     ft_push(&stack1, &stack2);
+//     // }
+//     // ft_swap(&stack1);
+//     ft_reverse_rotate(&stack1);
+    
 //     // Print stack1 and stack2 after pushing
-//     printf("Stack1 after pushing to Stack2:\n");
+//     printf("Stack1 after:\n");
 //     ptr = stack1;
 //     while (ptr) {
 //         printf("Index: %d, Number: %d\n", ptr->index, ptr->number);
 //         ptr = ptr->next;
 //     }
 
-//     printf("Stack2 after pushing from Stack1:\n");
 //     ptr = stack2;
 //     while (ptr) {
 //         printf("Index: %d, Number: %d\n", ptr->index, ptr->number);

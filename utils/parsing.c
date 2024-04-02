@@ -6,26 +6,40 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:40:52 by amouhand          #+#    #+#             */
-/*   Updated: 2024/03/31 00:31:21 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/02 03:55:23 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int parsing(char **command, int n)
+char **parsing(char **command, int n, int *nums)
 {
 	int i;
+	char *string;
+	char **split;
 
-	i = 1;
+	i = 0;
 	while (n > i)
 	{
 		if (error_check(command[i]))
-			return (1);
-		if (find_duplicates(command, n))
-			return (1);
+			return (NULL);
 		i++;
 	}
-	return (0);
+	i = 0;
+	while(n > i)
+	{
+		string = splitting(string, command[i]);
+		if (!string)
+			return (NULL);
+		i++;
+	}
+	split = ft_split(string, ' ');
+	if (find_duplicates(split, countsplit(split)))
+		return (NULL);
+	if (string_to_array(split, countsplit(split), &nums))
+		return (NULL);
+	free(string);
+	return (split);
 }
 int error_check(char *num)
 {
@@ -52,11 +66,11 @@ int find_duplicates(char **numbers, int n)
 {
 	int i;
 	int j;
-	int arr[n];
+	int *arr;
 	
 	i = 0;
 	j = 0;
-	string_to_array(numbers, n, arr);
+	string_to_array(numbers, n, &arr);
 	while (i < n)
 	{
 		j = i + 1;
@@ -70,46 +84,30 @@ int find_duplicates(char **numbers, int n)
 	}
 	return (0);
 }
-int countwords(char *str)
+char *splitting(char *s, char *str)
 {
-	int i;
-	int count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] != ' ')
-		{
-			count++;
-			while (str[i] != ' ' && str[i])
-				i++;
-		}
-		else
-			i++;
-	}
-	return (count);
-}
-int *splitting(char *str, int countwords(char *str))
-{
-	int *arr;
 	char **split;
 	int i;
-	int n;
-
+	
 	i = 0;
-	n = countwords(str);
-	arr = (int *)malloc(sizeof(int) * n);
-	if (!arr)
-		return (NULL);
 	split = ft_split(str, ' ');
 	if (!split)
 		return (NULL);
-	while (i < n)
+	while(split[i])
 	{
-		arr[i] = ft_atoi(split[i]);
+		s = ft_strjoin(s, split[i]);
+		s = ft_strjoin(s, " ");
 		i++;
 	}
 	free(split);
-	return (arr);
+	return (s);
+}
+int	countsplit(char **split)
+{
+	int i;
+
+	i = 0;
+	while (split[i])
+		i++;
+	return (i);
 }
