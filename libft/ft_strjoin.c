@@ -48,7 +48,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	else if (!s1 && !s2)
 		return (ft_strdup(""));
 	total_len = ft_strlen(s1) + ft_strlen(s2);
-	joined = (char *)ft_calloc((total_len + 1), sizeof(char));
+	joined = (char *)ft_calloc((total_len + 1), sizeof(char));            
 	if (!joined)
 		return (NULL);
 	ft_joined(joined, s1, s2);

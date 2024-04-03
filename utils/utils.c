@@ -6,22 +6,51 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:02:17 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/02 03:48:14 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/03 07:56:57 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void exiting(char *msg, t_stack **a, t_stack **b, int *nums)
+void exiting(char **split, t_stack **a, t_stack **b, int *nums)
 {
-	write(2, msg, ft_strlen(msg));
+	int i;
+
+	i = 0;
+	write(2, "Error\n", 6);
 	if (a)
+	{
 		ft_stackclear(a);
+		free(a);
+	}
 	if (b)
+	{
 		ft_stackclear(b);
+		free(b);
+	}
 	if (nums)
 		free(nums);
+	if (split)
+		free_all(split, countsplit(split));
 	exit(1);
+}
+void ft_success(char **split, t_stack **a, t_stack **b, int *nums)
+{
+	if (a)
+	{
+		ft_stackclear(a);
+		free(a);
+	}
+	if (b)
+	{
+		ft_stackclear(b);
+		free(b);
+	}
+	if (nums)
+		free(nums);
+	if (split)
+		free_all(split, countsplit(split));
+	exit(0);
 }
 
 long	long	ft_atol(const char *nptr)
@@ -48,12 +77,16 @@ long	long	ft_atol(const char *nptr)
 	}
 	return ((outcome * sign));
 }
-int is_sorted(int arr[], int size)
+int is_sorted(int *arr, int size)
 {
-    for (int i = 1; i < size - 1; i++)
+	int i;
+
+	i = 0;
+    while(i < size)
 	{
         if (arr[i] > arr[i + 1])
             return (1);
+		i++;
     }
     return (0);
 }
@@ -68,7 +101,7 @@ int string_to_array(char **chars, int n, int **nums)
 		return (1);
 	while (i < n)
 	{
-		(*nums)[i] = ft_atoi(chars[i]);
+		nums[0][i] = ft_atoi(chars[i]);
 		i++;
 	}
 	return (0);

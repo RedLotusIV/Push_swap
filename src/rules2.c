@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rules2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 09:17:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/03 07:57:35 by amouhand         ###   ########.fr       */
+/*   Created: 2024/04/03 07:08:58 by amouhand          #+#    #+#             */
+/*   Updated: 2024/04/03 07:09:29 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int main(int ac, char *av[])
+void	ra(t_stack **a)
 {
-	t_stack **a;
-	t_stack **b;
-	int		*nums;
-	char **s;
-
-	a = malloc(sizeof(t_stack *));
-	b = malloc(sizeof(t_stack *));
-	nums = NULL;
-
-	s = parsing(av + 1, ac - 1, &nums);
-	if (!s || nillcheck(av + 1, ac - 1))
-		exiting(s, a, b, nums);
-	if (!is_sorted(nums, countsplit(s)))
-		ft_success(s, a, b, nums);
-	init_stacks(a, b, nums, countsplit(s));
-	ft_success(s, a, b, nums);
-	return (0);
+	ft_rotate(a);
+	write(1, "ra\n", 3);
+}
+void	rb(t_stack **b)
+{
+	ft_rotate(b);
+	write(1, "rb\n", 3);
+}
+void	rr(t_stack **a, t_stack **b)
+{
+	ft_rotate(a);
+	ft_rotate(b);
+	write(1, "rr\n", 3);
+}
+void	rra(t_stack **a)
+{
+	ft_reverse_rotate(a);
+	write(1, "rra\n", 4);
+}
+void	rrb(t_stack **b)
+{
+	ft_reverse_rotate(b);
+	write(1, "rrb\n", 4);
 }

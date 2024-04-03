@@ -6,24 +6,51 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 00:20:48 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/02 03:16:01 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/03 08:09:47 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 int init_stacks(t_stack **a, t_stack **b, int* nums, int n)
 {
-	int i;
+    int i;
+    t_stack *node;
+    t_stack *tmp;
 
-	i = 0;
-	a = (t_stack **)malloc(sizeof(t_stack *));
-	b = (t_stack **)malloc(sizeof(t_stack *));
-	if (!a || !b)
-		return (1);
-	while (i < n)
-	{
-		ft_stackadd_front(a, ft_stacknew(i, nums[i]));
-		i++;
-	}
-	return (0);
+    i = n - 1;
+    *a = NULL;
+    *b = NULL;
+    while (i >= 0)
+    {
+        node = ft_stacknew(i, nums[i]);
+        if (!node)
+            return (1);
+        ft_stackadd_front(a, node);
+        i--;
+    }
+    sa(a);
+    tmp = *a;
+    printf("stack a\n");
+    while (tmp)
+    {
+        printf("index: %d, number: %d\n", tmp->index, tmp->number);
+        tmp = tmp->next;
+    }
+    pb(a, b);
+    pb(a, b);
+    tmp = *b;
+    printf("stack b\n");
+    while (tmp)
+    {
+        printf("index: %d, number: %d\n", tmp->index, tmp->number);
+        tmp = tmp->next;
+    }
+    tmp = *a;
+    printf("stack a\n");
+    while (tmp)
+    {
+        printf("index: %d, number: %d\n", tmp->index, tmp->number);
+        tmp = tmp->next;
+    }
+    return (0);
 }

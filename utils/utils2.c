@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 09:17:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/03 07:57:35 by amouhand         ###   ########.fr       */
+/*   Created: 2024/04/03 06:56:09 by amouhand          #+#    #+#             */
+/*   Updated: 2024/04/03 07:02:22 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int main(int ac, char *av[])
+int nillcheck(char **av, int ac)
 {
-	t_stack **a;
-	t_stack **b;
-	int		*nums;
-	char **s;
+	int i;
 
-	a = malloc(sizeof(t_stack *));
-	b = malloc(sizeof(t_stack *));
-	nums = NULL;
-
-	s = parsing(av + 1, ac - 1, &nums);
-	if (!s || nillcheck(av + 1, ac - 1))
-		exiting(s, a, b, nums);
-	if (!is_sorted(nums, countsplit(s)))
-		ft_success(s, a, b, nums);
-	init_stacks(a, b, nums, countsplit(s));
-	ft_success(s, a, b, nums);
+	i = 0;
+	while (i < ac)
+	{
+		if (av[i][0] == '\0')
+		{
+			printf("%d\n", i);
+			return (1);
+		}
+		i++;
+	}
 	return (0);
 }

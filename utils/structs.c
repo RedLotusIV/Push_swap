@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:08:35 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/01 21:05:48 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/03 06:05:59 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,18 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new)
 
 void	ft_stackclear(t_stack **stack)
 {
-	t_stack	*ptr;
-	t_stack	*store;
+	t_stack	*tmp;
 
-	if (!stack)
-		return ;
-	ptr = *stack;
-	store = NULL;
-	while (ptr)
+	if (*stack)
 	{
-		store = ptr->next;
-		ft_stackdelone(ptr);
-		ptr = store;
+		while (*stack)
+		{
+			tmp = (*stack)-> next;
+			ft_stackdelone(*stack);
+			*stack = tmp;
+		}
+		*stack = NULL;
 	}
-	*stack = NULL;
 }
 void	ft_stackdelone(t_stack *stack)
 {

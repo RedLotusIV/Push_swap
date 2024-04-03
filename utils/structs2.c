@@ -23,3 +23,19 @@ t_stack	*ft_stacklast(t_stack *stack)
 		last = last->next;
 	return (last);
 }
+int	ft_stacksize(t_stack *stack)
+{
+	int		i;
+	t_stack	*head;
+
+	if (!stack)
+		return (0);
+	head = stack;
+	i = 0;
+	while (head != NULL)
+	{
+		head = head -> next;
+		i++;
+	}
+	return (i);
+}

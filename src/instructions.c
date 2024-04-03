@@ -3,7 +3,7 @@ int ft_swap(t_stack **stack)
 {
 	t_stack *tmp;
 
-	if (!stack || !*stack || !(*stack)->next)
+	if (!stack || !*stack || !(*stack)->next )
 		return (-1);
 	tmp = ft_stacknew(0, 0);
 	if (!tmp)
@@ -60,4 +60,10 @@ int ft_reverse_rotate(t_stack **stack)
 	last->next = *stack;
 	*stack = last;
 	return (0);
+}
+void rrr(t_stack **a, t_stack **b)
+{
+	ft_reverse_rotate(a);
+	ft_reverse_rotate(b);
+	write(1, "rrr\n", 4);
 }
