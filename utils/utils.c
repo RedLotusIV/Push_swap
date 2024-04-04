@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:02:17 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/03 07:56:57 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/03 08:42:24 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int is_sorted(int *arr, int size)
 	int i;
 
 	i = 0;
-    while(i < size)
+    while(i < size - 1)
 	{
         if (arr[i] > arr[i + 1])
             return (1);

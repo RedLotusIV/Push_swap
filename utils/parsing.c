@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:40:52 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/03 06:53:37 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/04 04:11:01 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int error_check(char *num)
 		return (1);
 	if (num[i] == '+' || num[i] == '-')
 		i++;
+	if (num[i] == '\0')
+		return (1);
 	while(num[i])
 	{
 		if (!ft_isdigit(num[i]))
@@ -134,42 +136,7 @@ char *splitting(char *s, char *str)
     free_all(split, i);
     return (s);
 }
-// char *splitting(char *s, char *str, int ac)
-// {
-// 	char **split;
-// 	int i;
-// 	char *s2;
-// 	int j = 0;
-	
-// 	i = 0;
-// 	split = ft_split(str, ' ');
-// 	s2 = malloc(sizeof(char) * ac + 1);
-// 	if (!split)
-// 		return (NULL);
-// 	while(split[i])
-// 	{
-// 		s = ft_strjoin(s, split[i]);
-// 		if (!s)
-// 		{
-// 			free_all(split, i + 1);
-// 			return (NULL);
-// 		}
-// 		s2[j++] = s2[i];
-// 		s2[j++] = ' ';
-		
-// 		// s2 = ft_strjoin(s, " ");
-// 		// if (!s2)
-// 		// {
-// 		// 	free_all(split, i + 1);
-// 		// 	free(s);
-// 		// 	return (NULL);
-// 		// }
-// 		i++;
-// 		free(s);
-// 	}
-// 	free_all(split, i);
-// 	return (s2);
-// }
+
 int	countsplit(char **split)
 {
 	int i;

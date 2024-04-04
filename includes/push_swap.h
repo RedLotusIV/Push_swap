@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:05:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/03 07:21:15 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/04 04:15:39 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,27 @@ int			countsplit(char **split);
 void		free_all(char **strs, size_t n);
 int			nillcheck(char **av, int ac);
 // rules 
-void             sa(t_stack **stack_a);
-void             sb(t_stack **stack_b);
-void             ss(t_stack **stack_a, t_stack **stack_b);
-void             pa(t_stack **stack_a, t_stack **stack_b);
-void             pb(t_stack **stack_a, t_stack **stack_b);
-void             ra(t_stack **stack_a);
-void             rb(t_stack **stack_b);
-void             rr(t_stack **stack_a, t_stack **stack_b);
-void             rra(t_stack **stack_a);
-void             rrb(t_stack **stack_b);
-void             rrr(t_stack **stack_a, t_stack **stack_b);
+void		sa(t_stack **stack_a);
+void		sb(t_stack **stack_b);
+void		ss(t_stack **stack_a, t_stack **stack_b);
+void		pa(t_stack **stack_a, t_stack **stack_b);
+void		pb(t_stack **stack_a, t_stack **stack_b);
+void		ra(t_stack **stack_a);
+void		rb(t_stack **stack_b);
+void		rr(t_stack **stack_a, t_stack **stack_b);
+void		rra(t_stack **stack_a);
+void		rrb(t_stack **stack_b);
+void		rrr(t_stack **stack_a, t_stack **stack_b);
 
+// smallsort
+int			sort_2(t_stack **a);
+int			sort_3(t_stack **a);
+int			sort_5(t_stack **a, t_stack **b);
+int			sort_4(t_stack **a, t_stack **b);
+int			sort(t_stack **a, t_stack **b);
+// helpers
+int			get_distance(t_stack **stack, int index);
+int			get_min(t_stack **stack);
+int			reset_index(t_stack **a, t_stack **b);
+int 		struct_is_sorted(t_stack **a);
 #endif

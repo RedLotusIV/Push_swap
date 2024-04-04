@@ -39,3 +39,76 @@ int	ft_stacksize(t_stack *stack)
 	}
 	return (i);
 }
+int	get_min(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		min;
+	int index;
+
+	index = 0;
+	tmp = *stack;
+	min = tmp->number;
+	while (tmp)
+	{
+		if (min > tmp->number)
+		{
+			min = tmp->number;
+			index = tmp->index;
+		}
+		tmp = tmp->next;
+	}
+	return (index);
+}
+int	get_distance(t_stack **stack, int index)
+{
+	t_stack	*head;
+	int		distance;
+
+	distance = 0;
+	head = *stack;
+	while (head)
+	{
+		if (head->index == index)
+			break ;
+		distance++;
+		head = head->next;
+	}
+	return (distance);
+}
+int	reset_index(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = *a;
+	while (tmp)
+	{
+		tmp->index = i;
+		i++;
+		tmp = tmp->next;
+	}
+	if(!b || !*b)
+		return (0);
+	tmp = *b;
+	while (tmp)
+	{
+		tmp->index = i;
+		i++;
+		tmp = tmp->next;
+	}
+	return (0);
+}
+int	struct_is_sorted(t_stack **a)
+{
+	t_stack	*tmp;
+
+	tmp = *a;
+	while (tmp->next)
+	{
+		if (tmp->number > tmp->next->number)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
