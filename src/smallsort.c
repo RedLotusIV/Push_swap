@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 07:49:07 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/04 04:08:42 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:30:29 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,20 @@ int	sort_2(t_stack **a)
 }
 int	sort_3(t_stack **a)
 {
-	
-	// 3 2 1
 	if(ft_stacksize(*a) < 3)
 		return (-1);
 	if(struct_is_sorted(a))
 		return (0);
-	// 3 1 2
 	if ((*a)->number > (*a)->next->number && (*a)->number > (*a)->next->next->number)
 	{
 		ra(a);
 		if ((*a)->number > (*a)->next->number)
 			sa(a);
 	}
-	// 2 1 3
 	else if ((*a)->number > (*a)->next->number && (*a)->number < (*a)->next->next->number)
 		sa(a);
-	// 2 3 1
 	else if ((*a)->number < (*a)->next->number && (*a)->number > (*a)->next->next->number)
 		rra(a);
-	// 1 3 2
 	else if ((*a)->number < (*a)->next->number && (*a)->number < (*a)->next->next->number)
 	{
 		rra(a);
@@ -99,14 +93,19 @@ int sort_5(t_stack **a, t_stack **b)
 	pa(a, b);
 	return (0);
 }
-int	sort(t_stack **a, t_stack **b)
+int	small_sort(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
-	tmp = *a;
-	tmp = *b;
-	// int distance;
+	int size;
 
-	// distance = get_distance(a, get_min(a));
-	
+	size = ft_stacksize(*a);
+
+	if (size == 2)
+		sort_2(a);
+	else if (size == 3)
+		sort_3(a);
+	else if (size == 4)
+		sort_4(a, b);
+	else if (size == 5)
+		sort_5(a, b);
 	return (0);
 }

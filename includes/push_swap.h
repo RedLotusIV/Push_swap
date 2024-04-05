@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:05:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/04 04:15:39 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:41:13 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,15 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-void exiting(char **split, t_stack **a, t_stack **b, int *nums);
-void ft_success(char **split, t_stack **a, t_stack **b, int *nums);
+void 		exiting(char **split, t_stack **a, t_stack **b, int *nums);
+void 		ft_success(char **split, t_stack **a, t_stack **b, int *nums);
 char		**parsing(char **command, int number, int **nums);
 int			error_check(char *num);
 long long	ft_atol(const char *nptr);
 void		*delete(void *content);
-void		countSort(int arr[], int n, int exp);
 int			is_sorted(int *arr, int size);
 int			string_to_array(char **chars, int n, int **nums);
 int			find_duplicates(char **numbers, int n);
-void		radixsort(int arr[], int n);
-int			getMax(int arr[], int n);
 t_stack		*ft_stacklast(t_stack *stack);
 t_stack		*ft_stacknew(int index, int number);
 void		ft_stackadd_front(t_stack **stack, t_stack *new);
@@ -67,10 +64,13 @@ int			sort_2(t_stack **a);
 int			sort_3(t_stack **a);
 int			sort_5(t_stack **a, t_stack **b);
 int			sort_4(t_stack **a, t_stack **b);
-int			sort(t_stack **a, t_stack **b);
+int			small_sort(t_stack **a, t_stack **b);
+int			bigsort(t_stack **a, t_stack **b, int* nums);
+void		numsort(int *nums, int n);
 // helpers
 int			get_distance(t_stack **stack, int index);
 int			get_min(t_stack **stack);
 int			reset_index(t_stack **a, t_stack **b);
 int 		struct_is_sorted(t_stack **a);
+// to delete
 #endif

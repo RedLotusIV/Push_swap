@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:17:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/04 04:14:13 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:18:03 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,8 @@ int main(int ac, char *av[])
 	if (!is_sorted(nums, countsplit(s)))
 		ft_success(s, a, b, nums);
 	init_stacks(a, b, nums, countsplit(s));
-
 	// sort the stacks according to the number of elements
-	if (countsplit(s) == 2)
-		sort_2(a);
-	else if (countsplit(s) == 3)
-		sort_3(a);
-	else if (countsplit(s) == 4)
-		sort_4(a, b);
-	else if (countsplit(s) == 5)
-		sort_5(a, b);
-	else
-		sort(a, b);
+	bigsort(a, b, nums);
 	// print the stacks
 	tmp = *a;
     printf("stack a\n");

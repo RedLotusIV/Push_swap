@@ -1,8 +1,8 @@
 NAME	=	push_swap
 
-SRC		= 	src/algo.c src/main.c utils/parsing.c utils/utils.c\
+SRC		= 	src/main.c utils/parsing.c utils/utils.c\
 			utils/structs.c utils/structs2.c src/initstacks.c\
-			src/radixsort.c src/smallsort.c utils/utils2.c\
+			src/bigsort.c src/smallsort.c utils/utils2.c\
 			src/rules1.c src/rules2.c src/instructions.c\
 
 CC		=	cc

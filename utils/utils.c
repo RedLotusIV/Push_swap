@@ -6,12 +6,21 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:02:17 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/03 08:42:24 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:43:15 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+int check_over(unsigned long int i)
+{
+	if (i > INT_MAX)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+	return (0);
+}
 void exiting(char **split, t_stack **a, t_stack **b, int *nums)
 {
 	int i;
@@ -58,7 +67,9 @@ long	long	ft_atol(const char *nptr)
 	long		sign;
 	long long	outcome;
 	size_t	i;
+	int flag;
 
+	flag = 1;
 	i = 0;
 	outcome = 0;
 	sign = 1;
@@ -67,7 +78,10 @@ long	long	ft_atol(const char *nptr)
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')
+		{
 			sign *= -1;
+			flag = -1;
+		}
 		i++;
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
@@ -75,6 +89,8 @@ long	long	ft_atol(const char *nptr)
 		outcome = outcome * 10 + nptr[i] - '0';
 		i++;
 	}
+	if (flag == 1)
+		check_over(outcome);
 	return ((outcome * sign));
 }
 int is_sorted(int *arr, int size)
