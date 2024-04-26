@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   structs3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 06:56:09 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/17 20:22:11 by amouhand         ###   ########.fr       */
+/*   Created: 2024/04/05 16:39:09 by amouhand          #+#    #+#             */
+/*   Updated: 2024/04/05 16:39:47 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-int nillcheck(char **av, int ac)
+int	get_max(t_stack **stack)
 {
-	int i;
-	int j;
+	t_stack	*tmp;
+	int		max;
+	int		index;
 
-	i = 0;
-	j = 0;
-	while (i < ac)
+	index = 0;
+	tmp = *stack;
+	max = tmp->number;
+	while (tmp)
 	{
-		j = 0;
-		while(av[i][j] == ' ')
-			j++;
-		if (av[i][j] == '-' || av[i][j] == '+')
-			j++;
-		if (!av[i][j])
-			return (1);
-		while (av[i][j])
+		if (max < tmp->number)
 		{
-		 	if (!ft_isdigit(av[i][j]) && !(av[i][j] == ' '))
-				return (1);
-			j++;
+			max = tmp->number;
+			index = tmp->index;
 		}
-		i++;
+		tmp = tmp->next;
 	}
-	return (0);
+	return (index);
 }

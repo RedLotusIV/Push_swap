@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:05:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/05 13:41:13 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:30:05 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,20 @@ int			get_distance(t_stack **stack, int index);
 int			get_min(t_stack **stack);
 int			reset_index(t_stack **a, t_stack **b);
 int 		struct_is_sorted(t_stack **a);
+int			get_max(t_stack **stack);
 // to delete
+/*
+required: sort   3 numbers with <=     3 operations
+required: sort   5 numbers with <=    12 operations
+scored:   sort 100 numbers with <=   700 operations   max score
+                                     900 operations
+                                    1100 operations
+                                    1300 operations
+                                    1500 operations   min score
+scored:   sort 500 numbers with <=  5500 operations   max score
+                                    7000 operations
+                                    8500 operations
+                                   10000 operations
+                                   11500 operations   min score
+*/
 #endif

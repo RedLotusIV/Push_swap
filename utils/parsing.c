@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:40:52 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/04 04:11:01 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/17 22:39:33 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ char **parsing(char **command, int n, int **nums)
 	int i;
 	int j;
 	char *string;
-	char **split;
+	char **split; 
 
 	i = 0;
+	// 1 2 3 "4 5 6"
 	string = ft_strdup("");
 	while(n > i)
 	{
@@ -28,7 +29,9 @@ char **parsing(char **command, int n, int **nums)
 			return (NULL);
 		i++;
 	}
+	// "1 2 3 4 5 6"
 	split = ft_split(string, ' ');
+	// "1" "2" "3" "4" "5" "6"
 	j = countsplit(split);
 	if (find_duplicates(split, j))
 	{
