@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bigsort.c                                          :+:      :+:    :+:   */
+/*   func.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 07:48:58 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/27 17:09:50 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/27 16:39:11 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,98 @@
 int	bigsort(t_stack **a, t_stack **b, int *nums)
 {
 	int		size;
+	int		mid;
 	int		start;
 	int		end;
+	int		counter;
+	int		offset;
+	t_stack	*tmp;
 
 	size = ft_stacksize(*a);
+	tmp = *a;
 	if (size <= 5)
 		return (small_sort(a, b));
-	start = 0;
-	if (size >= 6 && size <= 18)
-		end = 3;
+	counter = 0;
+	mid = size / 2 - 1;
+	if (size <= 40)
+	{
+		offset = 5;
+		end = mid + offset;
+		start = mid - offset;
+	}
 	else if (size <= 100)
-		end = 15;
+	{
+		offset = 15;
+		end = mid + offset;
+		start = mid - offset;
+	}
 	else if (size <= 500)
-		end = 45;
+	{
+		offset = 100;
+		end = mid + offset;
+		start = mid - offset;
+	}
 	else
-		end = 50;
+	{
+		offset = 80;
+		end = mid + offset;
+		start = mid - offset;
+	}
 	numsort(nums, size);
 	while (*a)
 	{
-		if ((*a)->number <= nums[start])
+		// if inside the range push to b
+		if ((*a)->number >= nums[start] && (*a)->number <= nums[end])
 		{
 			pb(a, b);
-			if (ft_stacksize(*b) > 1)
+			// if the number is bigger than the mid of the range rotate b
+			if (ft_stacksize(*b) > 1 && (*b)->number < nums[mid])
 				rb(b);
-			if (start < end)
-				start++;
-			if (end < size - 1)
-				end++;
 		}
-		else if ((*a)->number <= nums[end])
-		{
-			pb(a, b);
-			if (ft_stacksize(*b) > 1 && (*b)->number < (*b)->next->number)
-				sb(b);
-			if (start < end)
-				start++;
-			if (end < size - 1)
-				end++;
-		}
+		// if the number is not in the range
 		else
-			ra(a);
+		{
+			// check if a number with the same range is even in a
+			tmp = *a;
+			while (tmp && (tmp->number < nums[start] || tmp->number > nums[end]))
+			{
+				counter++;
+				tmp = tmp->next;
+			}
+			// if not, increase the range, and reset the counter
+			if (counter == ft_stacksize(*a))
+			{
+				if ((end + counter) / offset < size)
+					end += offset;
+				else
+					end = size - 1;
+				if (start - counter >= 0)
+					start -= offset;
+				else
+					start = 0;
+				counter = 0;
+			}
+			// if the number is in the first half of the range, better to rotate a
+			else
+			{
+				if (counter < ft_stacksize(*a) / 2)
+					while (counter)
+					{
+						ra(a);
+						counter--;
+					}
+				// if the number is in the second half of the range, better to reverse rotate a
+				else
+				{
+					counter = ft_stacksize(*a) - counter;
+					while (counter)
+					{
+						rra(a);
+						counter--;
+					}
+				}
+			}
+		}
 
 	}
 	while(*b)
