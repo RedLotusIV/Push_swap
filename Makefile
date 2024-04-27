@@ -8,7 +8,7 @@ SRC		= 	src/main.c utils/parsing.c utils/utils.c\
 
 CC		=	cc
 
-CFLAGS	=	-Wall -Werror -Wextra -g
+CFLAGS	=	-Wall -Werror -Wextra -g -O3
 
 LIBFT	=	libft/libft.a
 
@@ -17,7 +17,7 @@ OBJ		=	$(SRC:.c=.o)
 all		:	$(NAME)
 # -s to make the commands silent, -C to change directory before making
 $(NAME):	$(OBJ) $(LIBFT)
-			@$(CC) $(CFLAGS) $(OBJ) -L libft/ -lft -o bin/$(NAME)
+			@$(CC) $(CFLAGS) $(OBJ) -L libft/ -lft -o $(NAME)
 
 %.o	 : %.c
 		@$(CC) $(CFLAGS) -c $< -o $@
@@ -29,7 +29,7 @@ clean:
 		@rm -rf $(OBJ)
 
 fclean: clean
-		@rm -rf $(NAME) bin/$(NAME)
+		@rm -rf $(NAME) $(NAME)
 		@make fclean -s -C libft
 
 re:	fclean all

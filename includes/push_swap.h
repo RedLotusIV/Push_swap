@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:05:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/27 10:34:29 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/27 12:18:00 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int			reset_index(t_stack **a, t_stack **b);
 int 		struct_is_sorted(t_stack **a);
 int			get_max(t_stack **stack);
 int			get_max_number(t_stack *stack);
-void		rotate_b_to_max(t_stack **b);
+void		rotate_b_to_max(t_stack **b, int *nums, int size);
+int			find_last_node_in_range(t_stack *a, int start, int end);
 // to delete
 /*
 required: sort   3 numbers with <=     3 operations

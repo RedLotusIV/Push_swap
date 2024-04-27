@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 07:48:58 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/27 11:35:03 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:39:11 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	bigsort(t_stack **a, t_stack **b, int *nums)
 	int		start;
 	int		end;
 	int		counter;
+	int		offset;
 	t_stack	*tmp;
 
 	size = ft_stacksize(*a);
@@ -26,10 +27,31 @@ int	bigsort(t_stack **a, t_stack **b, int *nums)
 		return (small_sort(a, b));
 	counter = 0;
 	mid = size / 2 - 1;
-	start = 0;
-	end = 35;
+	if (size <= 40)
+	{
+		offset = 5;
+		end = mid + offset;
+		start = mid - offset;
+	}
+	else if (size <= 100)
+	{
+		offset = 15;
+		end = mid + offset;
+		start = mid - offset;
+	}
+	else if (size <= 500)
+	{
+		offset = 100;
+		end = mid + offset;
+		start = mid - offset;
+	}
+	else
+	{
+		offset = 80;
+		end = mid + offset;
+		start = mid - offset;
+	}
 	numsort(nums, size);
-	// not working but i will fix it
 	while (*a)
 	{
 		// if inside the range push to b
@@ -53,30 +75,38 @@ int	bigsort(t_stack **a, t_stack **b, int *nums)
 			// if not, increase the range, and reset the counter
 			if (counter == ft_stacksize(*a))
 			{
-				if ((end + counter) / 4 > size)
-					end = ft_stacksize(*a);
+				if ((end + counter) / offset < size)
+					end += offset;
 				else
-					end += 4;
+					end = size - 1;
+				if (start - counter >= 0)
+					start -= offset;
+				else
+					start = 0;
 				counter = 0;
 			}
 			// if the number is in the first half of the range, better to rotate a
-			else if (counter < ft_stacksize(*a) / 2)
-				while (counter)
-				{
-					ra(a);
-					counter--;
-				}
-			// if the number is in the second half of the range, better to reverse rotate a
 			else
 			{
-				counter = ft_stacksize(*a) - counter;
-				while (counter)
+				if (counter < ft_stacksize(*a) / 2)
+					while (counter)
+					{
+						ra(a);
+						counter--;
+					}
+				// if the number is in the second half of the range, better to reverse rotate a
+				else
 				{
-					rra(a);
-					counter--;
+					counter = ft_stacksize(*a) - counter;
+					while (counter)
+					{
+						rra(a);
+						counter--;
+					}
 				}
 			}
 		}
+
 	}
 	while(*b)
 	{
@@ -85,9 +115,11 @@ int	bigsort(t_stack **a, t_stack **b, int *nums)
 			pa(a, b);
 			size--;
 		}
+		else if ((*b)->next && (*b)->next->number == nums[size - 1])
+			sb(b);
 		else
 		{
-			rotate_b_to_max(b);
+			rotate_b_to_max(b, nums, size - 1);
 			pa(a, b);
 			size--;
 		}
@@ -119,7 +151,7 @@ void numsort(int *nums, int n)
 		i++;
 	}
 }
-void rotate_b_to_max(t_stack **b)
+void rotate_b_to_max(t_stack **b, int *nums, int size)
 {
 	int max;
 	t_stack *tmp;
@@ -137,6 +169,11 @@ void rotate_b_to_max(t_stack **b)
 	{
 		while (distance)
 		{
+			if ((*b)->next->number == nums[size])
+			{
+				sb(b);
+				break;
+			}
 			rb(b);
 			distance--;
 
@@ -152,3 +189,4 @@ void rotate_b_to_max(t_stack **b)
 		}
 	}
 }
+
