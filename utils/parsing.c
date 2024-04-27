@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:40:52 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/17 22:39:33 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:41:55 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char **parsing(char **command, int n, int **nums)
 	int i;
 	int j;
 	char *string;
-	char **split; 
+	char **split;
 
 	i = 0;
 	// 1 2 3 "4 5 6"
@@ -73,7 +73,7 @@ int error_check(char *num)
 	while(num[i])
 	{
 		if (!ft_isdigit(num[i]))
-        	return 1;	
+        	return 1;
 		i++;
 	}
 	return (0);
@@ -83,7 +83,7 @@ int find_duplicates(char **numbers, int n)
 	int i;
 	int j;
 	int *arr;
-	
+
 	i = 0;
 	j = 0;
 	string_to_array(numbers, n, &arr);
@@ -109,7 +109,7 @@ char *splitting(char *s, char *str)
     char **split;
     int i;
     char *tmp;
-    
+
     i = 0;
     split = ft_split(str, ' ');
     if (!split)
@@ -156,7 +156,8 @@ void	free_all(char **strs, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		free(strs[i]);
+		if (strs[i])
+			free(strs[i]);
 		i++;
 	}
 	free(strs);

@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:02:17 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/04 14:43:15 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:11:04 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,11 @@ int check_over(unsigned long int i)
 }
 void exiting(char **split, t_stack **a, t_stack **b, int *nums)
 {
-	int i;
-
-	i = 0;
 	write(2, "Error\n", 6);
 	if (a)
-	{
-		ft_stackclear(a);
 		free(a);
-	}
 	if (b)
-	{
-		ft_stackclear(b);
 		free(b);
-	}
 	if (nums)
 		free(nums);
 	if (split)
@@ -47,12 +38,14 @@ void ft_success(char **split, t_stack **a, t_stack **b, int *nums)
 {
 	if (a)
 	{
-		ft_stackclear(a);
+		if (*a)
+			ft_stackclear(a);
 		free(a);
 	}
 	if (b)
 	{
-		ft_stackclear(b);
+		if (*b)
+			ft_stackclear(b);
 		free(b);
 	}
 	if (nums)
@@ -98,13 +91,13 @@ int is_sorted(int *arr, int size)
 	int i;
 
 	i = 0;
-    while(i < size - 1)
+	while (i < size - 1)
 	{
-        if (arr[i] > arr[i + 1])
-            return (1);
+		if (arr[i] > arr[i + 1])
+			return (1);
 		i++;
-    }
-    return (0);
+	}
+	return (0);
 }
 
 int string_to_array(char **chars, int n, int **nums)

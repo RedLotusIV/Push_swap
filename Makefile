@@ -8,7 +8,7 @@ SRC		= 	src/main.c utils/parsing.c utils/utils.c\
 
 CC		=	cc
 
-CFLAGS	=	-Wall -Werror -Wextra -g -O3
+CFLAGS	=	-Wall -Werror -Wextra -g
 
 LIBFT	=	libft/libft.a
 

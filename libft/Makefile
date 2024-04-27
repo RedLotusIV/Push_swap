@@ -18,7 +18,7 @@ BONUS_OBJS		= $(BNS:.c=.o)
 
 CC				= cc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -O3
+CFLAGS			= -Wall -Wextra -Werror -g
 AR				= ar -rc
 
 NAME			= libft.a

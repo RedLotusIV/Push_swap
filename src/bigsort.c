@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 07:48:58 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/27 17:09:50 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/27 17:31:42 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ int	bigsort(t_stack **a, t_stack **b, int *nums)
 			ra(a);
 
 	}
-	while(*b)
-	{
+	while (*b)
 		if ((*b)->number == nums[size - 1])
 		{
 			pa(a, b);
@@ -66,13 +65,7 @@ int	bigsort(t_stack **a, t_stack **b, int *nums)
 		else if ((*b)->next && (*b)->next->number == nums[size - 1])
 			sb(b);
 		else
-		{
 			rotate_b_to_max(b, nums, size - 1);
-			pa(a, b);
-			size--;
-		}
-
-	}
 	return (0);
 }
 void numsort(int *nums, int n)

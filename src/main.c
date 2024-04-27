@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:17:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/26 22:28:33 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:12:18 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ int main(int ac, char *av[])
 	t_stack **a;
 	t_stack **b;
 	int		*nums;
-	char **s;
+	char	**s;
 
 	a = malloc(sizeof(t_stack *));
 	b = malloc(sizeof(t_stack *));
+	*a = NULL;
+	*b = NULL;
 	nums = NULL;
 	s = parsing(av + 1, ac - 1, &nums);
 	if (!s || nillcheck(av + 1, ac - 1))
@@ -28,9 +30,7 @@ int main(int ac, char *av[])
 	if (!is_sorted(nums, countsplit(s)))
 		ft_success(s, a, b, nums);
 	init_stacks(a, b, nums, countsplit(s));
-	// sort the stacks according to the number of elements
 	bigsort(a, b, nums);
-	// exit with 0 and free all the allocated memory
 	ft_success(s, a, b, nums);
 	return (0);
 }
