@@ -4,7 +4,8 @@ SRC		= 	src/main.c utils/parsing.c utils/utils.c\
 			utils/structs.c utils/structs2.c src/initstacks.c\
 			src/bigsort.c src/smallsort.c utils/utils2.c\
 			src/rules1.c src/rules2.c src/instructions.c\
-			utils/structs3.c\
+			utils/structs3.c utils/parsing_utils.c\
+			src/bigsort_utils.c\
 
 CC		=	cc
 

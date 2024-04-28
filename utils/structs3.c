@@ -6,11 +6,12 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:39:09 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/27 10:16:11 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/28 11:47:01 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 int	get_max(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -31,6 +32,7 @@ int	get_max(t_stack **stack)
 	}
 	return (index);
 }
+
 int	get_max_number(t_stack *stack)
 {
 	int		max_number;
@@ -44,5 +46,19 @@ int	get_max_number(t_stack *stack)
 			max_number = tmp->number;
 		tmp = tmp->next;
 	}
-	return max_number;
+	return (max_number);
+}
+
+int	struct_is_sorted(t_stack **a)
+{
+	t_stack	*tmp;
+
+	tmp = *a;
+	while (tmp->next)
+	{
+		if (tmp->number > tmp->next->number)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }

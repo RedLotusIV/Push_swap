@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:08:35 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/27 19:46:19 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/28 11:40:55 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@ t_stack	*ft_stacknew(int index, int number)
 	head = (t_stack *)malloc(sizeof(*head));
 	if (head == NULL)
 		return (NULL);
-	head -> index = index;
-	head -> number = number;
-	head -> next = NULL;
+	head->index = index;
+	head->number = number;
+	head->next = NULL;
 	return (head);
 }
+
 void	ft_stackadd_front(t_stack **stack, t_stack *new)
 {
 	if (stack)
 	{
 		if (*stack)
-			new -> next = *stack;
+			new->next = *stack;
 		*stack = new;
 	}
 }
@@ -42,13 +43,14 @@ void	ft_stackclear(t_stack **stack)
 	{
 		while (*stack)
 		{
-			tmp = (*stack)-> next;
+			tmp = (*stack)->next;
 			ft_stackdelone(*stack);
 			*stack = tmp;
 		}
 		*stack = NULL;
 	}
 }
+
 void	ft_stackdelone(t_stack *stack)
 {
 	if (stack)

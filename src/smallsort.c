@@ -6,34 +6,40 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 07:49:07 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/05 13:30:29 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/28 12:42:38 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 int	sort_2(t_stack **a)
 {
 	if ((*a)->number > (*a)->next->number)
 		sa(a);
 	return (0);
 }
+
 int	sort_3(t_stack **a)
 {
-	if(ft_stacksize(*a) < 3)
+	if (ft_stacksize(*a) < 3)
 		return (-1);
-	if(struct_is_sorted(a))
+	if (struct_is_sorted(a))
 		return (0);
-	if ((*a)->number > (*a)->next->number && (*a)->number > (*a)->next->next->number)
+	if ((*a)->number > (*a)->next->number
+		&& (*a)->number > (*a)->next->next->number)
 	{
 		ra(a);
 		if ((*a)->number > (*a)->next->number)
 			sa(a);
 	}
-	else if ((*a)->number > (*a)->next->number && (*a)->number < (*a)->next->next->number)
+	else if ((*a)->number > (*a)->next->number
+		&& (*a)->number < (*a)->next->next->number)
 		sa(a);
-	else if ((*a)->number < (*a)->next->number && (*a)->number > (*a)->next->next->number)
+	else if ((*a)->number < (*a)->next->number
+		&& (*a)->number > (*a)->next->next->number)
 		rra(a);
-	else if ((*a)->number < (*a)->next->number && (*a)->number < (*a)->next->next->number)
+	else if ((*a)->number < (*a)->next->number
+		&& (*a)->number < (*a)->next->next->number)
 	{
 		rra(a);
 		if ((*a)->number > (*a)->next->number)
@@ -44,9 +50,9 @@ int	sort_3(t_stack **a)
 
 int	sort_4(t_stack **a, t_stack **b)
 {
-	int distance;
-	
-	if(ft_stacksize(*a) < 4)
+	int	distance;
+
+	if (ft_stacksize(*a) < 4)
 		return (-1);
 	if (struct_is_sorted(a))
 		return (0);
@@ -60,18 +66,19 @@ int	sort_4(t_stack **a, t_stack **b)
 	}
 	else if (distance == 3)
 		rra(a);
-	if(struct_is_sorted(a))
+	if (struct_is_sorted(a))
 		return (0);
 	pb(a, b);
 	sort_3(a);
 	pa(a, b);
 	return (0);
 }
-int sort_5(t_stack **a, t_stack **b)
+
+int	sort_5(t_stack **a, t_stack **b)
 {
-	int distance;
-	
-	if(struct_is_sorted(a))
+	int	distance;
+
+	if (struct_is_sorted(a))
 		return (0);
 	distance = get_distance(a, get_min(a));
 	if (distance == 1)
@@ -93,12 +100,12 @@ int sort_5(t_stack **a, t_stack **b)
 	pa(a, b);
 	return (0);
 }
+
 int	small_sort(t_stack **a, t_stack **b)
 {
-	int size;
+	int	size;
 
 	size = ft_stacksize(*a);
-
 	if (size == 2)
 		sort_2(a);
 	else if (size == 3)

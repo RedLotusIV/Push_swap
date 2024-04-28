@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:12:21 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/13 16:04:18 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/28 11:42:20 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_stack	*ft_stacklast(t_stack *stack)
 		last = last->next;
 	return (last);
 }
+
 int	ft_stacksize(t_stack *stack)
 {
 	int		i;
@@ -34,16 +35,17 @@ int	ft_stacksize(t_stack *stack)
 	i = 0;
 	while (head != NULL)
 	{
-		head = head -> next;
+		head = head->next;
 		i++;
 	}
 	return (i);
 }
+
 int	get_min(t_stack **stack)
 {
 	t_stack	*tmp;
 	int		min;
-	int index;
+	int		index;
 
 	index = 0;
 	tmp = *stack;
@@ -59,6 +61,7 @@ int	get_min(t_stack **stack)
 	}
 	return (index);
 }
+
 int	get_distance(t_stack **stack, int index)
 {
 	t_stack	*head;
@@ -75,6 +78,7 @@ int	get_distance(t_stack **stack, int index)
 	}
 	return (distance);
 }
+
 int	reset_index(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
@@ -88,7 +92,7 @@ int	reset_index(t_stack **a, t_stack **b)
 		i++;
 		tmp = tmp->next;
 	}
-	if(!b || !*b)
+	if (!b || !*b)
 		return (0);
 	tmp = *b;
 	while (tmp)
@@ -98,17 +102,4 @@ int	reset_index(t_stack **a, t_stack **b)
 		tmp = tmp->next;
 	}
 	return (0);
-}
-int	struct_is_sorted(t_stack **a)
-{
-	t_stack	*tmp;
-
-	tmp = *a;
-	while (tmp->next)
-	{
-		if (tmp->number > tmp->next->number)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
 }

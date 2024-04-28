@@ -6,32 +6,40 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:40:52 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/27 19:41:55 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/28 12:36:23 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-char **parsing(char **command, int n, int **nums)
+char	**parsing(char **command, int n, int **nums)
 {
-	int i;
-	int j;
-	char *string;
-	char **split;
+	int		i;
+	char	*string;
+	char	**split;
 
 	i = 0;
-	// 1 2 3 "4 5 6"
 	string = ft_strdup("");
-	while(n > i)
+	while (n > i)
 	{
 		string = splitting(string, command[i]);
 		if (!string)
 			return (NULL);
 		i++;
 	}
-	// "1 2 3 4 5 6"
 	split = ft_split(string, ' ');
-	// "1" "2" "3" "4" "5" "6"
+	if (!(duplicates_and_errors(split, nums, string)))
+		return (NULL);
+	free(string);
+	return (split);
+}
+
+char	**duplicates_and_errors(char **split, int **nums, char *string)
+{
+	int	i;
+	int	j;
+
+	i = 0;
 	j = countsplit(split);
 	if (find_duplicates(split, j))
 	{
@@ -41,7 +49,6 @@ char **parsing(char **command, int n, int **nums)
 		return (NULL);
 	}
 	string_to_array(split, j, nums);
-	i = 0;
 	while (j > i)
 	{
 		if (error_check(split[i]))
@@ -52,15 +59,15 @@ char **parsing(char **command, int n, int **nums)
 		}
 		i++;
 	}
-	free(string);
 	return (split);
 }
-int error_check(char *num)
-{
-	int i;
-	long long number;
-	i = 0;
 
+int	error_check(char *num)
+{
+	int			i;
+	long long	number;
+
+	i = 0;
 	if (num == NULL || num[0] == '\0')
 		return (1);
 	number = ft_atol(num);
@@ -70,19 +77,20 @@ int error_check(char *num)
 		i++;
 	if (num[i] == '\0')
 		return (1);
-	while(num[i])
+	while (num[i])
 	{
 		if (!ft_isdigit(num[i]))
-        	return 1;
+			return (1);
 		i++;
 	}
 	return (0);
 }
-int find_duplicates(char **numbers, int n)
+
+int	find_duplicates(char **numbers, int n)
 {
-	int i;
-	int j;
-	int *arr;
+	int	i;
+	int	j;
+	int	*arr;
 
 	i = 0;
 	j = 0;
@@ -104,51 +112,7 @@ int find_duplicates(char **numbers, int n)
 	free(arr);
 	return (0);
 }
-char *splitting(char *s, char *str)
-{
-    char **split;
-    int i;
-    char *tmp;
 
-    i = 0;
-    split = ft_split(str, ' ');
-    if (!split)
-        return (NULL);
-    while(split[i])
-    {
-        tmp = ft_strjoin(s, split[i]);
-        if (!tmp)
-        {
-            free_all(split, countsplit(split));
-            free(s);
-            return (NULL);
-        }
-        free(s);
-        s = tmp;
-        tmp = ft_strjoin(s, " ");
-        if (!tmp)
-        {
-            free_all(split, countsplit(split));
-			free(s);
-            return (NULL);
-        }
-        free(s);
-        s = tmp;
-        i++;
-    }
-    free_all(split, i);
-    return (s);
-}
-
-int	countsplit(char **split)
-{
-	int i;
-
-	i = 0;
-	while (split[i])
-		i++;
-	return (i);
-}
 void	free_all(char **strs, size_t n)
 {
 	size_t	i;

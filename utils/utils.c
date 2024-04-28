@@ -6,13 +6,13 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:02:17 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/27 21:11:04 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/28 11:26:52 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int check_over(unsigned long int i)
+int	check_over(unsigned long int i)
 {
 	if (i > INT_MAX)
 	{
@@ -21,7 +21,8 @@ int check_over(unsigned long int i)
 	}
 	return (0);
 }
-void exiting(char **split, t_stack **a, t_stack **b, int *nums)
+
+void	exiting(char **split, t_stack **a, t_stack **b, int *nums)
 {
 	write(2, "Error\n", 6);
 	if (a)
@@ -34,7 +35,8 @@ void exiting(char **split, t_stack **a, t_stack **b, int *nums)
 		free_all(split, countsplit(split));
 	exit(1);
 }
-void ft_success(char **split, t_stack **a, t_stack **b, int *nums)
+
+void	ft_success(char **split, t_stack **a, t_stack **b, int *nums)
 {
 	if (a)
 	{
@@ -55,40 +57,9 @@ void ft_success(char **split, t_stack **a, t_stack **b, int *nums)
 	exit(0);
 }
 
-long	long	ft_atol(const char *nptr)
+int	is_sorted(int *arr, int size)
 {
-	long		sign;
-	long long	outcome;
-	size_t	i;
-	int flag;
-
-	flag = 1;
-	i = 0;
-	outcome = 0;
-	sign = 1;
-	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
-	{
-		if (nptr[i] == '-')
-		{
-			sign *= -1;
-			flag = -1;
-		}
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		outcome = outcome * 10 + nptr[i] - '0';
-		i++;
-	}
-	if (flag == 1)
-		check_over(outcome);
-	return ((outcome * sign));
-}
-int is_sorted(int *arr, int size)
-{
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size - 1)
@@ -100,9 +71,9 @@ int is_sorted(int *arr, int size)
 	return (0);
 }
 
-int string_to_array(char **chars, int n, int **nums)
+int	string_to_array(char **chars, int n, int **nums)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	*nums = (int *)malloc(sizeof(int) * n);
