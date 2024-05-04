@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 06:56:09 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/28 11:38:58 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/04 19:47:30 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,33 @@ int	nillcheck(char **av, int ac)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < ac)
 	{
 		j = 0;
-		while (av[i][j] == ' ')
-			j++;
-		if (av[i][j] == '-' || av[i][j] == '+')
-			j++;
-		if (!av[i][j])
+		if (av[i][j] == '\0')
 			return (1);
 		while (av[i][j])
 		{
+			minus_space(av[i], &j);
+			if (av[i][j] == '-' || av[i][j] == '+')
+			{
+				if (!ft_isdigit(av[i][++j]))
+					return (1);
+			}
 			if (!ft_isdigit(av[i][j]) && !(av[i][j] == ' '))
 				return (1);
 			j++;
+			minus_space(av[i], &j);
 		}
 		i++;
 	}
 	return (0);
+}
+
+void	minus_space(char *s, int *i)
+{
+	while (s[*i] == ' ')
+		(*i)++;
 }
 
 long long	ft_atol(const char *nptr)
