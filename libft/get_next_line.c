@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouhand <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:41:11 by amouhand          #+#    #+#             */
-/*   Updated: 2024/03/18 05:53:28 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:46:25 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,13 @@ char	*get_next_line(int fd)
 	static char	*remainder[1024];
 	char		*ret;
 
-	if (fd < 0 && BUFFER_SIZE <= 0)
+	if (fd == -1)
+	{
+		free(remainder[0]);
+		remainder[0] = NULL;
+		return (NULL);
+	}
+	if ((fd < 0 || fd >= 1024) && BUFFER_SIZE <= 0)
 		return (NULL);
 	remainder[fd] = reading_fd(fd, remainder[fd]);
 	if (!remainder[fd])

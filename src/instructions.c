@@ -6,71 +6,68 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:03:51 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/03 16:53:06 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:35:29 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_swap(t_stack **stack)
+void	ft_swap(t_stack **stack)
 {
 	t_stack	*tmp;
 
 	if (!stack || !*stack || !(*stack)->next)
-		return (-1);
+		return;
 	tmp = ft_stacknew(0, 0);
 	if (!tmp)
-		return (-1);
+		return;
 	tmp->next = (*stack)->next;
 	(*stack)->next = tmp->next->next;
 	tmp->next->next = *stack;
 	*stack = tmp->next;
 	reset_index(stack, NULL);
 	free(tmp);
-	return (0);
 }
 
-int	ft_push(t_stack **from, t_stack **to)
+void	ft_push(t_stack **from, t_stack **to)
 {
 	t_stack	*new_node;
 	t_stack	*temp;
 
 	if (!from || !*from || !to)
-		return (-1);
+		return;
 	new_node = ft_stacknew((*from)->index, (*from)->number);
 	if (!new_node)
-		return (-1);
+		return;
 	ft_stackadd_front(to, new_node);
 	temp = *from;
 	*from = (*from)->next;
 	reset_index(from, to);
 	free(temp);
-	return (0);
 }
 
-int	ft_rotate(t_stack **stack)
+void	ft_rotate(t_stack **stack)
 {
 	t_stack	*head;
 	t_stack	*last;
 
 	if (!stack || !*stack)
-		return (-1);
+		return;
 	head = *stack;
 	last = ft_stacklast(*stack);
 	*stack = head->next;
 	head->next = NULL;
 	last->next = head;
 	reset_index(stack, NULL);
-	return (0);
 }
 
-int	ft_reverse_rotate(t_stack **stack)
+void	ft_reverse_rotate(t_stack **stack)
 {
 	t_stack	*before_last;
 	t_stack	*last;
 
 	if (!stack || !*stack)
-		return (-1);
+		return;
 	before_last = *stack;
 	last = ft_stacklast(*stack);
 	while (before_last->next != last)
@@ -79,7 +76,6 @@ int	ft_reverse_rotate(t_stack **stack)
 	last->next = *stack;
 	*stack = last;
 	reset_index(stack, NULL);
-	return (0);
 }
 
 void	rrr(t_stack **a, t_stack **b)

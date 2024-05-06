@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 06:56:09 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/04 19:47:30 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:00:08 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,24 @@ void	minus_space(char *s, int *i)
 		(*i)++;
 }
 
-long long	ft_atol(const char *nptr)
+long long	ft_atol(const char *nptr, int *over_int)
 {
 	long		sign;
 	long long	outcome;
 	size_t		i;
 	int			flag;
 
+	sign = 1;
 	flag = 1;
 	i = space_skip((char *)nptr, &sign, &flag);
 	outcome = 0;
-	sign = 1;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		outcome = outcome * 10 + nptr[i] - '0';
 		i++;
 	}
 	if (flag == 1)
-		check_over(outcome);
+		check_over(outcome, over_int);
 	return ((outcome * sign));
 }
 

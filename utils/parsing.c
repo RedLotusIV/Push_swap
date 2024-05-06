@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:40:52 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/28 12:36:23 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:51:12 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,21 @@ char	**duplicates_and_errors(char **split, int **nums, char *string)
 		}
 		i++;
 	}
-	return (split);
+	return (split); //-203487230472304734 -1 0 23
 }
 
 int	error_check(char *num)
 {
 	int			i;
 	long long	number;
+	int over_int;
 
 	i = 0;
+	over_int = 0;
 	if (num == NULL || num[0] == '\0')
 		return (1);
-	number = ft_atol(num);
-	if (number > INT_MAX || number < INT_MIN)
+	number = ft_atol(num, &over_int);
+	if (number < -2147483648 || over_int)
 		return (1);
 	if (num[i] == '+' || num[i] == '-')
 		i++;

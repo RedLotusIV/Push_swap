@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:05:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/04 19:49:03 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:45:55 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ void				ft_stackadd_front(t_stack **stack, t_stack *new);
 void				ft_stackclear(t_stack **stack);
 void				ft_stackdelone(t_stack *stack);
 int					ft_stacksize(t_stack *stack);
-int					ft_swap(t_stack **stack);
-int					ft_push(t_stack **from, t_stack **to);
-int					ft_rotate(t_stack **stack);
-int					ft_reverse_rotate(t_stack **stack);
+void				ft_swap(t_stack **stack);
+void				ft_push(t_stack **from, t_stack **to);
+void				ft_rotate(t_stack **stack);
+void				ft_reverse_rotate(t_stack **stack);
 void				*delete(void *content);
 // parsing
 char				**parsing(char **command, int number, int **nums);
 void				exiting(char **split, t_stack **a, t_stack **b, int *nums);
 void				ft_success(char **split, t_stack **a, t_stack **b,
 						int *nums);
-long long			ft_atol(const char *nptr);
+long long			ft_atol(const char *nptr, int *over_int);
 int					error_check(char *num);
 int					string_to_array(char **chars, int n, int **nums);
 int					is_sorted(int *arr, int size);
 int					find_duplicates(char **numbers, int n);
 int					nillcheck(char **av, int ac);
-int					check_over(unsigned long int i);
+int					check_over(unsigned long int i, int *over_int);
 int					countsplit(char **split);
 char				*splitting(char *s, char *str);
 void				free_all(char **strs, size_t n);
