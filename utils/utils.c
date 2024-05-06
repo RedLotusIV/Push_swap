@@ -6,21 +6,11 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:02:17 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/05 15:44:23 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:28:13 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-int	check_over(unsigned long int i, int *over_int)
-{
-	if (i > INT_MAX)
-	{
-		*over_int = 1;
-		return (1);
-	}
-	return (0);
-}
 
 void	exiting(char **split, t_stack **a, t_stack **b, int *nums)
 {

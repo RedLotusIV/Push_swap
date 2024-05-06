@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 06:56:09 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/05 16:00:08 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:30:59 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ long long	ft_atol(const char *nptr, int *over_int)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		outcome = outcome * 10 + nptr[i] - '0';
+		if (outcome > INT_MAX || outcome < INT_MIN)
+			(*over_int)++;
 		i++;
 	}
-	if (flag == 1)
-		check_over(outcome, over_int);
 	return ((outcome * sign));
 }
 

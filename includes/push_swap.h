@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:05:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/05 15:45:55 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:31:04 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int					string_to_array(char **chars, int n, int **nums);
 int					is_sorted(int *arr, int size);
 int					find_duplicates(char **numbers, int n);
 int					nillcheck(char **av, int ac);
-int					check_over(unsigned long int i, int *over_int);
 int					countsplit(char **split);
 char				*splitting(char *s, char *str);
 void				free_all(char **strs, size_t n);

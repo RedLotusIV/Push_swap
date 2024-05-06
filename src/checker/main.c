@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:05:28 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/06 16:48:41 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:10:50 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char *av[])
 	b = malloc(sizeof(t_stack *));
 	*a = NULL;
 	*b = NULL;
+	nums = NULL;
 	s = parsing(av + 1, ac - 1, &nums);
 	if (!s || nillcheck(av + 1, ac - 1))
 		exiting(s, a, b, nums);

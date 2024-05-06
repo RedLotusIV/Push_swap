@@ -17,7 +17,7 @@ BSRC	=	src/checker/main.c src/checker/utils.c utils/structs.c\
 
 CC		=	cc
 
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra -g
 
 LIBFT	=	libft/libft.a
 

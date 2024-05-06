@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:40:52 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/06 16:50:32 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:27:41 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char	**duplicates_and_errors(char **split, int **nums, char *string)
 	j = countsplit(split);
 	if (find_duplicates(split, j))
 	{
-		free(*nums);
 		free_all(split, j);
 		free(string);
 		return (NULL);
@@ -73,7 +72,7 @@ int	error_check(char *num)
 	if (num == NULL || num[0] == '\0')
 		return (1);
 	number = ft_atol(num, &over_int);
-	if (number < -2147483648 || over_int)
+	if (over_int)
 		return (1);
 	if (num[i] == '+' || num[i] == '-')
 		i++;
