@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:05:28 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/06 16:35:34 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:48:41 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ int	main(int ac, char *av[])
 	else
 		ft_failure(s, a, b, nums);
 }
-

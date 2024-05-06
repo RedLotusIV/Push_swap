@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:03:51 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/05 15:35:29 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:48:26 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	ft_swap(t_stack **stack)
 	t_stack	*tmp;
 
 	if (!stack || !*stack || !(*stack)->next)
-		return;
+		return ;
 	tmp = ft_stacknew(0, 0);
 	if (!tmp)
-		return;
+		return ;
 	tmp->next = (*stack)->next;
 	(*stack)->next = tmp->next->next;
 	tmp->next->next = *stack;
@@ -35,10 +35,10 @@ void	ft_push(t_stack **from, t_stack **to)
 	t_stack	*temp;
 
 	if (!from || !*from || !to)
-		return;
+		return ;
 	new_node = ft_stacknew((*from)->index, (*from)->number);
 	if (!new_node)
-		return;
+		return ;
 	ft_stackadd_front(to, new_node);
 	temp = *from;
 	*from = (*from)->next;
@@ -52,7 +52,7 @@ void	ft_rotate(t_stack **stack)
 	t_stack	*last;
 
 	if (!stack || !*stack)
-		return;
+		return ;
 	head = *stack;
 	last = ft_stacklast(*stack);
 	*stack = head->next;
@@ -67,7 +67,7 @@ void	ft_reverse_rotate(t_stack **stack)
 	t_stack	*last;
 
 	if (!stack || !*stack)
-		return;
+		return ;
 	before_last = *stack;
 	last = ft_stacklast(*stack);
 	while (before_last->next != last)

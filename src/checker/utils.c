@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:30:32 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/06 16:45:58 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:49:41 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
-int reading_lines(t_stack **a, t_stack **b)
+
+int	reading_lines(t_stack **a, t_stack **b)
 {
-	char *line;
+	char	*line;
 
 	line = get_next_line(0);
 	while (line)
@@ -72,6 +73,7 @@ int	read_instructions(t_stack **a, t_stack **b, char *line)
 int	sorted(t_stack **a, t_stack **b)
 {
 	t_stack	*temp;
+
 	if (!*a)
 		return (1);
 	temp = *a;
