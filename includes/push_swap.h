@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:05:55 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/06 20:31:04 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 23:00:56 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char				*splitting(char *s, char *str);
 void				free_all(char **strs, size_t n);
 char				**duplicates_and_errors(char **split, int **nums,
 						char *string);
-int					space_skip(char *nptr, long *sign, int *flag);
+int					space_skip(char *nptr, long *sign);
 void				minus_space(char *s, int *i);
 
 // rules

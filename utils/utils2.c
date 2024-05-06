@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 06:56:09 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/06 20:30:59 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/05/06 23:00:35 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,9 @@ long long	ft_atol(const char *nptr, int *over_int)
 	long		sign;
 	long long	outcome;
 	size_t		i;
-	int			flag;
 
 	sign = 1;
-	flag = 1;
-	i = space_skip((char *)nptr, &sign, &flag);
+	i = space_skip((char *)nptr, &sign);
 	outcome = 0;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
@@ -68,7 +66,7 @@ long long	ft_atol(const char *nptr, int *over_int)
 	return ((outcome * sign));
 }
 
-int	space_skip(char *nptr, long *sign, int *flag)
+int	space_skip(char *nptr, long *sign)
 {
 	int	i;
 
@@ -78,10 +76,7 @@ int	space_skip(char *nptr, long *sign, int *flag)
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')
-		{
 			(*sign) *= -1;
-			(*flag) = -1;
-		}
 		i++;
 	}
 	return (i);
